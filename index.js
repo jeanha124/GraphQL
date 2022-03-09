@@ -1,10 +1,16 @@
 const express = require("express");
 const mongoose = require('mongoose');
+const expressGraphQL = require('express-graphql').graphqlHTTP;
 const app = express();
 const db = require('./config/keys').mongoURI;
 const bodyParser = require('body-parser');
 
-app.get("/", (req, res) => res.send("Hello World"));
+app.use(
+  "/graphql",
+  expressGraphQL({
+    graphiql: true
+  })
+);
 
 app.use(bodyParser.json());
 app.listen(5000, () => console.log('Server is running on port 5000'));
