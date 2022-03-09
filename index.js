@@ -4,10 +4,13 @@ const expressGraphQL = require('express-graphql').graphqlHTTP;
 const app = express();
 const db = require('./config/keys').mongoURI;
 const bodyParser = require('body-parser');
+const User = require("./models/user");
+const schema = require("./schema/schema");
 
 app.use(
   "/graphql",
   expressGraphQL({
+    schema,
     graphiql: true
   })
 );
