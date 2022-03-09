@@ -16,12 +16,18 @@ const RootQuery = new GraphQLObjectType({
       }
     },
     user: {
-      //Querying for a single User
+      // //Querying for a single User
+      // type: UserType,
+      // //Must define type for the arguments, GraphQLNonNull specifies there must be an arg
+      // args: { id: { type: new graphql.GraphQLNonNull(GraphQLID) } },
+      // resolve(parentValue, args) {
+      //   return User.findById(args.id)
+      // }
+      //Cleaner version
       type: UserType,
-      //Must define type for the arguments, GraphQLNonNull specifies there must be an arg
       args: { id: { type: new graphql.GraphQLNonNull(GraphQLID) } },
-      resolve(parentValue, args) {
-        return User.findById(args.id)
+      resolve(parentValue, { id }) {
+        return User.findById(id)
       }
     }
   }
