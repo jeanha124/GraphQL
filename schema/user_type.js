@@ -1,6 +1,5 @@
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLID, GraphQLString } = graphql;
-
 const UserType = new GraphQLObjectType({
   name: "UserType",
   fields: {
@@ -9,5 +8,6 @@ const UserType = new GraphQLObjectType({
     email: { type: GraphQLString }
   }
 });
+const PostType = require(".post_type");
 
 module.exports = UserType;
